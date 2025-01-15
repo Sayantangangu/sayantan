@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be Mine?</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+            animation: fadeIn 2s;
+            overflow: hidden;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        h1 {
+            font-size: 3.5em;
+            color: #ff4d4d;
+            text-shadow: 2px 2px #fff;
+            animation: bounceIn 2s;
+        }
+        @keyframes bounceIn {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 1.5em;
+            margin: 10px;
+            padding: 15px 30px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px #b30000;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px #b30000;
+        }
+        #no-btn {
+            position: absolute;
+        }
+        #content {
+            padding: 20px;
+        }
+        p {
+            font-size: 1.5em;
+            color: #555;
+        }
+        .heart-animation {
+            font-size: 5em;
+            color: #ff4d4d;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .rose-animation {
+            position: fixed;
+            bottom: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            animation: riseUp 3s ease-out forwards;
+        }
+        @keyframes riseUp {
+            0% { bottom: -200px; opacity: 0; }
+            50% { bottom: 50%; opacity: 1; }
+            100% { bottom: 30%; opacity: 1; }
+        }
+        .slideshow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .slideshow img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: slide 15s infinite;
+        }
+        .slideshow img:nth-child(2) {
+            animation-delay: 5s;
+        }
+        .slideshow img:nth-child(3) {
+            animation-delay: 10s;
+        }
+        @keyframes slide {
+            0% { opacity: 0; }
+            33.33% { opacity: 1; }
+            66.66% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            button {
+                font-size: 1.2em;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow">
+        <img src="https://cdn.pixabay.com/photo/2024/01/21/18/46/penguin-8523666_640.jpg" alt="Romantic Scene 1">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFVrxkv_Hty2led8xJDDcRwCTWvSgF3gE6JKhUQXtyfMqYU6ek8dJl79ca1VYLrGVUdPA&usqp=CAU" alt="Romantic Scene 2">
+        <img src="data:image/jpeg;base64,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" alt="Romantic Scene 3">
+    </div>
+
+    <div id="content">
+        <h1>Will You Be My Forever?</h1>
+        <p>I have something special to ask you. So... what do you say?</p>
+        <div class="heart-animation">❤️</div>
+        <div class="button-container">
+            <button id="yes-btn" onclick="showLoveMessage()">Yes! ❤️</button>
+            <button id="no-btn" onmouseover="moveNoButton()">No 😢</button>
+        </div>
+        <p id="response-message" style="margin-top: 20px; font-size: 1.2em; display: none;"></p>
+        <img id="rose-bunch" src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSL1NGL5dRIpbPpkQ7NXXPw6V8ossSkr-IAE5f-Mneeof9ixerqyBuFELDbDtIZuhQAyiN-qwnMjrLtwqxSanlpxsnizkML9NgO5TtQSy4" alt="Rose Bunch" style="display: none;" class="rose-animation">
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('no-btn');
+        const responseMessage = document.getElementById('response-message');
+        const roseBunch = document.getElementById('rose-bunch');
+
+        function moveNoButton() {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        }
+
+        function showLoveMessage() {
+            responseMessage.style.display = 'block';
+            responseMessage.textContent = "Yay! You said YES! 🎉💖 Thank you, Porota! I love you!";
+            roseBunch.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+
